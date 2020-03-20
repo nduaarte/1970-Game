@@ -6,7 +6,7 @@ O objetivo basicamente é rebater a "bolinha" até o objetivo que está em verme
 com mais velocidade e local de objetivo menor. Caso caia no limbo que está em azul, retorna ao primeiro Stage.
 Talvez tu queira [ver o que estou falando](https://i.imgur.com/JBfNRjp.png).
 
-Tu consegue passar do Stage 10 ?
+Tu conseguiria passar do Stage 10 ?
 
 <hr>
 
