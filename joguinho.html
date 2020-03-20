@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>game</title>
+    <style>
+        canvas {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+        }
+    </style>
+    <canvas id="game" width="400px" height="600px" style="border: 2px solid black">
+        O canvas não está ativado no seu Browser
+    </canvas>    
+</head>
+<body>
+    <script>
+        document.addEventListener("keydown", function(e){
+            console.log(e.keyCode);
+            switch(e.keyCode) {
+                case 37:
+                    speedX = -3;
+                    break;
+
+                case 39:
+                    speedX = 3;
+                    break;
+            }
+        });
+
+        var 
+            ctx, 
+            altura= 600,
+            largura = 400,
+            frames = 0,
+            speedX = 0,
+        //fim das variaveis
+
+
+
+        limbo = {
+            x: 0,
+            xLargura: largura,
+            y: 510,
+            yAltura: altura,
+            art: function() {
+            ctx.fillStyle = "#87CEEB";
+            ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);                   
+            }
+        };
+
+        ball = {
+            x: 190,
+            xLargura: 15,
+            y: 200,
+            yAltura: 15, 
+            speed: 3,
+
+            art: function() {
+                ctx.fillStyle = "black";
+                ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
+                ctx.clearRect(this.x, this.y-7.5, this.xLargura, this.yAltura-7.5);            
+            },
+
+            atualiza: function() {
+                this.yAltura += this.speed;
+                
+            }
+        };
+
+        board = {
+            x: 150,
+            y: 500,
+            xLargura: 100,
+            yAltura: 10,
+            art: function() {
+                ctx.fillStyle = "black";
+                ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
+
+                if(this.xLargura > 100) {
+                    ctx.clearRect(this.x + 100, this.y, this.xLargura + 50, this.yAltura);
+                    ctx.clearRect(this.x - 100, this.y, this.xLargura - 50, this.yAltura);
+                }            
+            },
+
+            atualiza: function() {
+                this.x += speedX;
+                this.xLargura += speedX;
+
+
+            }
+        }
+        //fim dos objetos
+
+
+
+        function main(){
+            roda();
+        }
+
+
+        function atualiza (){
+            frames++;
+            ball.atualiza();
+            board.atualiza();
+        }
+
+        function art() {
+            var canvas = document.getElementById("game")
+            ctx = canvas.getContext("2d");
+
+            ball.art();
+            limbo.art();
+            board.art();
+
+            //objetivo
+            ctx.fillStyle = "red"
+            ctx.fillRect(150,0,100,5);
+        }
+
+       function roda() {
+            atualiza();
+            art();
+            window.requestAnimationFrame(roda);
+        }
+
+        main();
+    </script>
+</body>
+</html>
