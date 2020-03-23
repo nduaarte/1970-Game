@@ -22,15 +22,33 @@
 <body>
     <script>
         document.addEventListener("keydown", function(e){
-            console.log(e.keyCode);
             switch(e.keyCode) {
                 case 37:
-                    speedX = -3;
+                    speedX = -5;
+                    left = true;
+                    right = false;
                     break;
+                //esquerda
 
                 case 39:
                     speedX = 3;
+                    right = true;
+                    left = false;
                     break;
+                //direita
+            }
+        });
+
+        document.addEventListener("keyup", function(e){
+            switch(e.keyCode) {
+                case 37:
+                    speedX = 0;
+                    break;
+
+                case 39:
+                    speedX = 0;
+                    break;
+                
             }
         });
 
@@ -40,6 +58,8 @@
             largura = 400,
             frames = 0,
             speedX = 0,
+            left = false,
+            right = false,
         //fim das variaveis
 
 
@@ -71,6 +91,9 @@
             atualiza: function() {
                 this.yAltura += this.speed;
                 
+                if(this.yAltura == board.y) {
+                    ball.speed *= -1;
+                }
             }
         };
 
@@ -78,22 +101,22 @@
             x: 150,
             y: 500,
             xLargura: 100,
-            yAltura: 10,
+            yAltura: 6,
             art: function() {
                 ctx.fillStyle = "black";
                 ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
-
-                if(this.xLargura > 100) {
-                    ctx.clearRect(this.x + 100, this.y, this.xLargura + 50, this.yAltura);
-                    ctx.clearRect(this.x - 100, this.y, this.xLargura - 50, this.yAltura);
-                }            
+                
+                if(left == true) {
+                    ctx.clearRect(this.x+100, this.y, this.x, this.yAltura);
+                }
+                if(right == true) {
+                    ctx.clearRect(this.xLargura-101, this.y, this.xLargura+51, this.yAltura);
+                }
             },
 
             atualiza: function() {
                 this.x += speedX;
-                this.xLargura += speedX;
-
-
+                this.xLargura +=speedX;
             }
         }
         //fim dos objetos
