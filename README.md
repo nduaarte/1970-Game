@@ -10,6 +10,8 @@ Tu conseguiria passar do Stage 10 ?
 
 <hr>
 
+<h2>Notas do Desenvolvimento <h2>
+
 20.03.20 - Projeto Postado. Aproximadamente 40% completo.
 
 23.03.20 - Adicionado animação e funções da prancha. Bugs podem existir.
