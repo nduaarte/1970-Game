@@ -10,7 +10,7 @@ Tu conseguiria passar do Stage 10 ?
 
 <hr>
 
-<h1>Notas do Desenvolvimento <h1>
+<h3>Notas do Desenvolvimento</h3>
 
 20.03.20 - Projeto Postado. Aproximadamente 40% completo.
 
