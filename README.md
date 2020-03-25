@@ -12,10 +12,10 @@ Tu conseguiria passar do Stage 10 ?
 
 <h3>Notas do Desenvolvimento</h3>
 
-20.03.20 - Projeto Postado. Aproximadamente 40% completo.
+<strong>20.03.20</strong> - Projeto Postado. Aproximadamente 40% completo.
 
-23.03.20 - Adicionado animação e funções da prancha. Bugs podem existir.
+<strong>23.03.20</strong> - Adicionado animação e funções da prancha. Bugs podem existir.
 
-24.03.20 - Bugs Fixed.
+<strong>24.03.20</strong> - Bugs Fixed.
 
 <strong>25.03.20</strong> - Adicionado a pequena esfera e sua movimentação.
