@@ -16,4 +16,4 @@ Tu conseguiria passar do Stage 10 ?
 
 23.03.20 - Adicionado animação e funções da prancha. Bugs podem existir.
 
-24.03.20 - Bug Fixed.
+24.03.20 - Bugs Fixed.
