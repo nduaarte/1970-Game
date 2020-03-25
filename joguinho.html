@@ -24,14 +24,15 @@
         document.addEventListener("keydown", function(e){
             switch(e.keyCode) {
                 case 37:
-                    speedX = -5;
+                    speedX = -9;
                     left = true;
                     right = false;
+                    sair == true;
                     break;
                 //esquerda
 
                 case 39:
-                    speedX = 3;
+                    speedX = 9;
                     right = true;
                     left = false;
                     break;
@@ -47,8 +48,7 @@
 
                 case 39:
                     speedX = 0;
-                    break;
-                
+                    break;  
             }
         });
 
@@ -80,44 +80,55 @@
             xLargura: 15,
             y: 200,
             yAltura: 15, 
-            speed: 3,
+            speedBall: 3,
 
             art: function() {
                 ctx.fillStyle = "black";
-                ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
-                ctx.clearRect(this.x, this.y-7.5, this.xLargura, this.yAltura-7.5);            
+                ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);            
             },
 
+            limpar: function() {
+                ctx.clearRect(this.x, this.y, this.xLargura, this.yAltura);
+            }, 
+
             atualiza: function() {
-                this.yAltura += this.speed;
-                
-                if(this.yAltura == board.y) {
-                    ball.speed *= -1;
-                }
+                this.limpar();
+                this.y += this.speedBall;
+                this.x += this.speedBall;
+                this.art();
             }
-        };
+        }; 
 
         board = {
             x: 150,
             y: 500,
             xLargura: 100,
             yAltura: 6,
+            
             art: function() {
                 ctx.fillStyle = "black";
                 ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
-                
-                if(left == true) {
-                    ctx.clearRect(this.x+100, this.y, this.x, this.yAltura);
-                }
-                if(right == true) {
-                    ctx.clearRect(this.xLargura-101, this.y, this.xLargura+51, this.yAltura);
-                }
+            },
+
+            limpar: function() {
+                ctx.clearRect(this.x, this.y, this.xLargura, this.yAltura);
             },
 
             atualiza: function() {
-                this.x += speedX;
-                this.xLargura +=speedX;
-            }
+                if(left == true || right == true) {
+                    this.limpar();
+                    this.x += speedX;
+                    this.art();
+                };
+
+                if(this.x <= 0) {
+                    this.x = 0;
+                }
+
+                if(this.x + this.xLargura >= 400) {
+                    this.x = 300;
+                }
+            } 
         }
         //fim dos objetos
 
@@ -142,14 +153,19 @@
             limbo.art();
             board.art();
 
-            //objetivo
             ctx.fillStyle = "red"
             ctx.fillRect(150,0,100,5);
         }
 
+        function limpar() {
+            ball.limpar();            
+            board.limpar();
+
+        }
+
        function roda() {
+            art();           
             atualiza();
-            art();
             window.requestAnimationFrame(roda);
         }
 
