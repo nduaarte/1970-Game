@@ -18,5 +18,4 @@ Tu conseguiria passar do Stage 10 ?
 
 <strong>24.03.20</strong> - Bugs Fixed.
 
-<strong>25.03.20</strong> - Adicionado a pequena esfera e sua movimentação. 
-                            Adicionado colisões dos objetos com o cenário.
+<strong>25.03.20</strong> - Adicionado a pequena esfera e sua movimentação. | Implementado no código as colisões dos objetos com o cenário.
