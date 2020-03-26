@@ -54,8 +54,8 @@
 
         var 
             ctx, 
-            altura= 600,
-            largura = 400,
+            ALTURA = 600,
+            LARGURA = 400,
             frames = 0,
             speedX = 0,
             left = false,
@@ -64,39 +64,80 @@
 
 
 
+        objective = {
+            x: 150,
+            y: 0,
+            xLargura: 100,
+            yAltura: 4.1,
+
+            art: function() {
+                ctx.fillStyle = "#32CD32";
+                ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
+            }
+        };
+
         limbo = {
             x: 0,
-            xLargura: largura,
-            y: 510,
-            yAltura: altura,
+            y: 510,            
+            xLargura: LARGURA,
+            yAltura: ALTURA,
+
             art: function() {
-            ctx.fillStyle = "#87CEEB";
+            ctx.fillStyle = "#FFE4C4";
             ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);                   
             }
         };
 
         ball = {
             x: 190,
-            xLargura: 15,
             y: 200,
-            yAltura: 15, 
-            speedBall: 3,
+            xLargura: 8,           
+            yAltura: 0, 
+            xSpeedBall: 5,
+            ySpeedBall: 5,
 
             art: function() {
+                ctx.beginPath();
                 ctx.fillStyle = "black";
-                ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);            
+                ctx.arc(this.x, this.y, this.xLargura, this.yAltura, Math.PI*2, true);
+                ctx.fill();            
             },
 
             limpar: function() {
-                ctx.clearRect(this.x, this.y, this.xLargura, this.yAltura);
+                ctx.clearRect(this.x-12, this.y-8, this.xLargura+12, this.yAltura+20);
             }, 
 
             atualiza: function() {
                 this.limpar();
-                this.y += this.speedBall;
-                this.x += this.speedBall;
+                this.y += this.ySpeedBall;
+                this.x += this.xSpeedBall;
                 this.art();
-            }
+
+                //se bater na prancha:
+                if(this.y + 8 - this.yAltura >= board.y && this.x >= board.x && this.x <= board.x + 100) {
+                    this.ySpeedBall *= -1;
+                }
+
+                //se bater no limbo:
+                if(this.y + 8 - this.yAltura >= ALTURA) {
+                    this.ySpeedBall *= -1;
+                }
+
+                // se bater aqui: >|
+                if(this.x  + 15 - this.xLargura >= LARGURA) {
+                    this.xSpeedBall *= -1;
+                }
+
+                //se bater aqui: |<
+                if(this.x -8 <= 0) {
+                    this.xSpeedBall *= -1;
+                }
+
+                //se bater no teto:
+                if(this.y <= 0) {
+                    this.ySpeedBall *= -1;
+                }
+            } 
         }; 
 
         board = {
@@ -152,9 +193,7 @@
             ball.art();
             limbo.art();
             board.art();
-
-            ctx.fillStyle = "red"
-            ctx.fillRect(150,0,100,5);
+            objective.art();
         }
 
         function limpar() {
