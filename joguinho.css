@@ -1,0 +1,41 @@
+canvas {
+    position: absolute;
+    top: 190px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+    position: relative;
+    font: normal 42pt monospace;
+    font-weight: bold;
+    color: rgb(49, 48, 48);
+    margin: 1%;
+}
+
+.copy {
+    font: normal 12pt monospace;
+    font-weight: bold;
+    text-align: center;
+    top: 650px;
+    position: relative;
+}
+
+.stg {
+    font: normal 42pt monospace;
+    font-weight: bold;
+    text-align: center;
+    top: 180px;
+    position: relative;
+    color: rgb(129, 129, 129);
+    opacity: 0.5;
+    margin: 0;
+}
+
+#stage_lvl {
+    margin: 0;
+    font: normal 62pt monospace;
+}
