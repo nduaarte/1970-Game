@@ -21,3 +21,5 @@ Tu conseguiria passar do Stage 10 ?
 <strong>25.03.20</strong> - Adicionado a pequena esfera e sua movimentação | Implementado no código as colisões dos objetos com o cenário.
 
 <strong>26.03.20</strong> - Mudança do tema, implementação de estilo e infraestrutura | Adicionado objetivo e a zona restrita do jogo | Separação dos arquivos.
+
+<strong>28.03.20</strong> - Bugs Fixed.
