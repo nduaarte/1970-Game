@@ -23,3 +23,5 @@ Tu conseguiria passar do Stage 10 ?
 <strong>26.03.20</strong> - Mudança do tema, implementação de estilo e infraestrutura | Adicionado objetivo e a zona restrita do jogo | Separação dos arquivos.
 
 <strong>28.03.20</strong> - Bugs Fixed.
+
+<strong>29.03.20</strong> - Implementado MENU do e redimensão do jogo.
