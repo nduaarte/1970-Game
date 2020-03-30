@@ -7,7 +7,7 @@
     <title>Ball Dash</title>
 
     <link rel="stylesheet" href="joguinho.css">
-    <canvas id="game" width="400px" height="600px" style="border: 2px solid black">
+    <canvas id="game" width="400px" height="530px" style="border: 2px solid black">
         O canvas não está ativado no seu Browser
     </canvas>    
 </head>
@@ -15,14 +15,15 @@
 
     <h1 class="title">Ball Dash</h1>
 
-    <div class="copy">
-        &copy 2020 - Desenvolvido por Redspace
+    <button id="button_start" onclick="mudarEstado()">PRESS START</button>
+
+    <div id="stg">
+        <p>STAGE</p>
     </div>
 
-    <div class="stg">
-        STAGE
-        <div id="stage_lvl">1</div>
-    </div>
+    <footer class="copy">
+        &copy 2020 - Desenvolvido por Redspace
+    </footer>
 
     <script class="game" src="joguinho.js"></script>
 </body>
