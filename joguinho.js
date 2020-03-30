@@ -37,7 +37,10 @@ var
     speedX = 0,
     left = false,
     right = false,
-//fim das variaveis
+    upStg = 1,
+    ESTADOS = 1,
+
+ //fim das variaveis  
 
 
 
@@ -50,6 +53,15 @@ objective = {
     art: function() {
         ctx.fillStyle = "#32CD32";
         ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
+    },
+
+    atualiza: function() {
+
+
+        if(ball.y <= this.yAltura) {
+            upStg ++;            
+            document.getElementById("stg").innerHTML = `STAGE <br> ${upStg}`;
+        };
     }
 };
 
@@ -62,7 +74,12 @@ limbo = {
     art: function() {
     ctx.fillStyle = "#FFE4C4";
     ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);                   
+    },
+
+    atualiza: function() {
+        mudarEstado();        
     }
+
 };
 
 ball = {
@@ -79,6 +96,7 @@ ball = {
         ctx.arc(this.x, this.y, this.xLargura, this.yAltura, Math.PI*2, true);
         ctx.fill();            
     },
+
 
     limpar: function() {
         ctx.clearRect(this.x-12, this.y-8, this.xLargura+12, this.yAltura+20);
@@ -97,7 +115,7 @@ ball = {
 
         //se bater no limbo:
         if(this.y + 8 - this.yAltura >= limbo.y) {
-            location.reload();
+          //  location.reload();
         }
 
         // se bater aqui: >|
@@ -159,24 +177,44 @@ function main(){
 
 function atualiza (){
     frames++;
-    ball.atualiza();
-    board.atualiza();
+
+    if(ESTADOS == 2) {
+        ball.atualiza();
+        board.atualiza();
+        objective.atualiza();
+    }           
 }
+
 
 function art() {
     var canvas = document.getElementById("game")
     ctx = canvas.getContext("2d");
 
-    ball.art();
-    limbo.art();
-    board.art();
-    objective.art();
+    if(ESTADOS == 1) {
+        document.getElementById("stg").innerHTML = ""; 
+    }
+
+    if(ESTADOS == 2) {
+        document.getElementById("stg").innerHTML = `STAGE <br> ${upStg}`;
+        document.getElementById("button_start").style.display = 'none';
+
+        ball.art();
+        limbo.art();
+        board.art();
+        objective.art();         
+    }
+        
+
+    if(ESTADOS == 3) {
+        desenhaImgGameOver();         
+    }
 }
 
 function limpar() {
+    if(ESTADOS ==2) {
     ball.limpar();            
-    board.limpar();
-
+    board.limpar();        
+    }
 }
 
 function roda() {
@@ -184,5 +222,20 @@ function roda() {
     atualiza();
     window.requestAnimationFrame(roda);
 }
+
+function mudarEstado() {
+    if(ESTADOS == 1) {
+        ESTADOS = 2;
+    }
+
+    if(ESTADOS == 2) {
+        ESTADOS == 3;
+    }
+
+    if(ESTADOS == 3) {
+        ESTADOS = 1;
+    }
+}
+
 
 main();
