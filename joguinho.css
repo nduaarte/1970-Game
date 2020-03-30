@@ -1,10 +1,15 @@
 canvas {
     position: absolute;
-    top: 190px;
+    top: 40px;
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin: auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 
 .title {
@@ -13,18 +18,20 @@ canvas {
     font: normal 42pt monospace;
     font-weight: bold;
     color: rgb(49, 48, 48);
-    margin: 1%;
+    margin: 0;
+    padding: 0;
 }
 
 .copy {
     font: normal 12pt monospace;
     font-weight: bold;
     text-align: center;
-    top: 650px;
-    position: relative;
+    top: 605px;
+    position: absolute;
+    left: 530px;
 }
 
-.stg {
+#stg {
     font: normal 42pt monospace;
     font-weight: bold;
     text-align: center;
@@ -35,7 +42,21 @@ canvas {
     margin: 0;
 }
 
-#stage_lvl {
-    margin: 0;
-    font: normal 62pt monospace;
+
+
+#button_start {
+    background: rgb(85, 163, 89);
+    font: normal 28pt monospace;
+    text-align: center;
+    position: relative;
+    top: 250px;
+    left: 560px;
+    font-weight: bold;
+    border-radius: 12px;
+    border-color: black;
+    cursor: pointer;
+}
+
+#button_start:hover {
+    background: rgb(94, 190, 99);
 }
