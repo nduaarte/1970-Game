@@ -4,7 +4,9 @@ Um projeto para colocar a teoria em prática no Javascript. Fique a vontade para
 
 O objetivo basicamente é rebater a "bolinha" até o objetivo que está em vermelho. Após isso, uma nova fase irá ser carregada
 com mais velocidade e local de objetivo menor. Caso caia no limbo que está em azul, retorna ao primeiro Stage.
-Talvez tu queira [ver o que estou falando](https://i.imgur.com/JBfNRjp.png).
+Talvez tu queira [ver o que estou falando](https://prnt.sc/rptu72).
+
+[Final do desenvolvimento](https://prnt.sc/rptuco).
 
 Tu conseguiria passar do Stage 10 ?
 
