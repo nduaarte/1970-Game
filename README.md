@@ -26,7 +26,7 @@ Tu conseguiria passar do Stage 10 ?
 
 <strong>29.03.20</strong> - Implementado MENU e redimensão do jogo.
 
-<strong>30.03.20</strong> - Adicionado fases do jogo e tela de GAME OVER | Desenvolvimento completo | Fase BETA 1.0 iniciada.
+<strong>30.03.20</strong> - Adicionado fases do jogo e tela de GAME OVER | Desenvolvimento completo | Fase BETA iniciada.
 
 <hr>
 
