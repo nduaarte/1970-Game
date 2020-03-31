@@ -25,3 +25,5 @@ Tu conseguiria passar do Stage 10 ?
 <strong>28.03.20</strong> - Bugs Fixed.
 
 <strong>29.03.20</strong> - Implementado MENU e redimensão do jogo.
+
+<strong>30.03.20</strong> - Adicionado fases do jogo e tela de GAME OVER.
