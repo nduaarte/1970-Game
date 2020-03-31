@@ -4,7 +4,6 @@ document.addEventListener("keydown", function(e){
             speedX = -9;
             left = true;
             right = false;
-            sair == true;
             break;
         //esquerda
 
@@ -39,13 +38,13 @@ var
     right = false,
     upStg = 1,
     ESTADOS = 1,
+    vrau = false,
 
- //fim das variaveis  
-
+//fim das variaveis  
 
 
 objective = {
-    x: 150,
+    x: Math.floor(Math.random()* 300),
     y: 0,
     xLargura: 100,
     yAltura: 4.1,
@@ -53,14 +52,17 @@ objective = {
     art: function() {
         ctx.fillStyle = "#32CD32";
         ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);
+        if(ball.y <= this.yAltura && ball.x >= this.x && ball.x + ball.xLargura <= this.x + this.xLargura) {
+            ctx.clearRect(0, 0, 400, 600);
+        }
     },
 
     atualiza: function() {
-
-
-        if(ball.y <= this.yAltura) {
-            upStg ++;            
-            document.getElementById("stg").innerHTML = `STAGE <br> ${upStg}`;
+        if(ball.y <= this.yAltura && ball.x >= this.x && ball.x + ball.xLargura <= this.x + this.xLargura) {
+            wait(1000);
+            upStg ++;
+            ball.xSpeedBall += 1;
+            ball.ySpeedBall += 1;      
         };
     }
 };
@@ -72,18 +74,23 @@ limbo = {
     yAltura: ALTURA,
 
     art: function() {
-    ctx.fillStyle = "#FFE4C4";
+    ctx.fillStyle = "#ff574d";
     ctx.fillRect(this.x, this.y, this.xLargura, this.yAltura);                   
     },
 
     atualiza: function() {
-        mudarEstado();        
+        if(ball.y + 9 >= this.y) {
+            mudarEstadoFor3();
+            vrau = true;
+            ball.ySpeedBall = 5;
+            ball.xSpeedBall =5;
+        }
     }
 
 };
 
 ball = {
-    x: Math.floor(Math.random() * 350 + 50),
+    x: Math.floor(Math.random() * 350),
     y: 200,
     xLargura: 8,           
     yAltura: 0, 
@@ -181,7 +188,8 @@ function atualiza (){
     if(ESTADOS == 2) {
         ball.atualiza();
         board.atualiza();
-        objective.atualiza();
+        objective.atualiza()
+        limbo.atualiza();
     }           
 }
 
@@ -191,29 +199,40 @@ function art() {
     ctx = canvas.getContext("2d");
 
     if(ESTADOS == 1) {
-        document.getElementById("stg").innerHTML = ""; 
+
+        upStg = 1;
+        document.getElementById("button_start").style.display = 'inline';
+        document.getElementById("button_reset").style.display = 'none';
+        document.getElementById("stg").innerHTML = "";
+
+        ctx.clearRect(0, 0, 400, 600);
+        ball.x = Math.floor(Math.random() * 350 + 50);
+        ball.y = 200;
     }
 
     if(ESTADOS == 2) {
         document.getElementById("stg").innerHTML = `STAGE <br> ${upStg}`;
         document.getElementById("button_start").style.display = 'none';
+        document.getElementById("button_reset").style.display = 'none';
 
         ball.art();
         limbo.art();
         board.art();
-        objective.art();         
+        objective.art();        
     }
         
 
     if(ESTADOS == 3) {
-        desenhaImgGameOver();         
+        document.getElementById("button_reset").style.display = 'inline';
+        document.getElementById("stg").innerHTML = `GAME <br> OVER`;
+
     }
 }
 
 function limpar() {
-    if(ESTADOS ==2) {
-    ball.limpar();            
-    board.limpar();        
+    if(ESTADOS == 2) {
+        ball.limpar();            
+        board.limpar();    
     }
 }
 
@@ -223,19 +242,31 @@ function roda() {
     window.requestAnimationFrame(roda);
 }
 
-function mudarEstado() {
-    if(ESTADOS == 1) {
-        ESTADOS = 2;
-    }
 
-    if(ESTADOS == 2) {
-        ESTADOS == 3;
-    }
-
-    if(ESTADOS == 3) {
-        ESTADOS = 1;
-    }
+function mudarEstadoFor1() {
+    ESTADOS = 1;
 }
 
+function mudarEstadoFor2() {
+    ESTADOS = 2;       
+}
+
+function mudarEstadoFor3() {
+    ESTADOS = 3;
+}
+
+function nextStage() {
+
+}
+
+function wait(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+
+}
 
 main();
