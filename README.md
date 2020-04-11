@@ -6,7 +6,7 @@ O objetivo basicamente é rebater a "bolinha" até o objetivo que está em verme
 com mais velocidade e local de objetivo menor. Caso caia no limbo que está em azul, retorna ao primeiro Stage.
 Talvez tu queira [ver o que estou falando](https://prnt.sc/rptu72).
 
-[Final do desenvolvimento](https://prnt.sc/rptuco).
+[v1.0](https://prnt.sc/rptuco).
 
 Tu conseguiria passar do Stage 10 ?
 
